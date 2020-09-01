@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/urlshorten', async (req, res) => {
-  if(await ShortUrl.findOne({fullURL: req.body.full_url}, null)==null){
+  if(await ShortUrl.findOne({fullURL: req.body.full_url, emailId: req.body.user_email}, null)==null){
   await ShortUrl.create({ emailId: req.body.user_email, fullURL: req.body.full_url });
   }
   res.json({ message: "created successfully", user_email: req.body.user_email });
