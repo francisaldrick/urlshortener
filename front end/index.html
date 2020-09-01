@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Short It</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="isLoggedIn == false">
+            <div class="container">
+                <div class="forms-container">
+                    <div class="signin-signup">
+                        <form v-on:submit="submitLoginForm" class="sign-in-form">
+                            <h2 class="title">Sign in</h2>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input type="text" v-model="emailid" placeholder="Email ID" />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" v-model="password" placeholder="Password" />
+                            </div>
+                            <input type="submit" value="Login" class="btn solid" />
+                        </form>
+                        <form v-on:submit="submitSignUpForm" class="sign-up-form">
+                            <h2 class="title">Sign up</h2>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input type="text" v-model="username" placeholder="Username" />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" v-model="emailid" placeholder="Email" />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" v-model="password" placeholder="Password" />
+                            </div>
+                            <input type="submit" class="btn" value="Sign up" />
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panels-container">
+                    <div class="panel left-panel">
+                        <div class="content">
+                            <h3>New here ?</h3>
+                            <p>
+                                create your account here if you are new here.
+                            </p>
+                            <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                        </div>
+                        <img src="#" class="image" alt="" />
+                    </div>
+                    <div class="panel right-panel">
+                        <div class="content">
+                            <h3>One of us ?</h3>
+                            <p>
+                                Sign in to your account if you are one of us.
+                            </p>
+                            <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                        </div>
+                        <img src="#" class="image" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-else>
+            <div class="container">
+                <div class="forms-container">
+                    <div class="signin-signup">
+                        <form v-on:submit="submitURLShorten" class="sign-in-form">
+                            <h2 class="title">Enter the URL</h2>
+                            <div class="input-field">
+                                <i></i>
+                                <input type="text" v-model="url" placeholder="Url" />
+                            </div>
+                            <input type="submit" value="Shorten" class="btn solid" />
+                        </form>
+                        <tablebox v-bind:shorturls="shortUrls"></tablebox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
