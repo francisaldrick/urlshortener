@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000"
+const baseUrl = "https://serene-castle-24630.herokuapp.com"
 
 Vue.component('tablebox', {
   props: ['shorturls'],
