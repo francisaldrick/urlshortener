@@ -13,7 +13,7 @@ Vue.component('tablebox', {
             </tr>
             <tr v-for="url in shorturls">
                 <td>{{ url.fullURL }}</td>
-                <td>{{ url.shortURL }}</td>
+                <td><a v-bind:href="baseUrl+'/'+url.shortURL">{{ url.shortURL }}</a></td>
                 <td>{{ url.clicks }}</td>
             </tr>
         </table>
